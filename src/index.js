@@ -26,14 +26,17 @@ function App() {
   }, [])
 
   if (data) {
+    console.log(data)
     return (
-      <ul>
-        {data.map((user) => {
-          <li key={user.id}>
-            {user.login}
-          </li>
-        })}
-      </ul>
+      < ul >
+        {
+          data.map((user) => (
+            <li key={user.id}>
+              {user.login}
+            </li>
+          ))
+        }
+      </ul >
     )
   }
 
