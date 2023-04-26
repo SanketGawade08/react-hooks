@@ -1,32 +1,92 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import { FaStar } from "react-icons/fa"
 
 
 function App() {
 
-  const [status, setStatus] = useState("Not Delivered")
-  const [check, setCheck] = useState("checked")
+  // const [status, setStatus] = useState("Not Delivered")
+  // const [check, setCheck] = useState("checked")
 
-  return (
-    <div>
-      <h1>
-        Package has been delivered : {status}.
-      </h1>
-      <button onClick={() => setStatus("Delivered")}>click me</button>
-      <p>Package is {check ? "Not Availabel" : "Availabel"} in warehouse</p>
-      <input type="checkbox" value="false" onChange={() => setCheck((check => !check))}></input>
-    </div>
-  )
+  // const [name, setName] = useState("Roohi")
+  // const [admin, setAdmin] = useState(false)
+
+  // const createArray = (length) => [...Array(length)];
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users`)
+      .then((response) => response.json())
+      .then(setData)
+    // console.log(data)
+  }, [])
+
+  if (data) {
+    return (
+      <ul>
+        {data.map((user) => {
+          <li key={user.id}>
+            {user.login}
+          </li>
+        })}
+      </ul>
+    )
+  }
+
+  // function star({ selected = false, onselect }) {
+  //   return (
+  //     <FaStar
+
+  //       color={selected ? "red" : "gray"}
+  //       onClick={onselect}>
+  //     </FaStar>
+  //   )
+  // }
+
+  // useEffect(() => {
+  //   console.log(`celebrate ${name}`);
+  // }, [name])
+
+  // useEffect(() => {
+  //   console.log(`the user is: ${admin ? "Admin" : "Not Admin"}`);
+  // }, [admin])
+
+
+  // return (
+  //   <p>hello</p>
+
+
+  //   // <section>
+  //   //   <p>Congratulations! {name}</p>
+  //   //   <button onClick={() => setName("Zooey")}>Change winner</button>
+
+  //   //   <p>{admin ? "logged in" : "Logged Out"}</p>
+  //   //   <button onClick={() => setAdmin(true)}>Log In</button>
+  //   // </section >
+
+
+
+  //   // {/* // <div>
+  //   // //   <h1>
+  //   // //     Package has been delivered : {status}.
+  //   // //   </h1>
+  //   // //   <button onClick={() => setStatus("Delivered")}>click me</button>
+  //   // //   <p>Package is {check ? "Not Availabel" : "Availabel"} in warehouse</p>
+  //   // //   <input type="checkbox" value="false" onChange={() => setCheck((check => !check))}></input>
+
+  //   // // </div> */}
+  // )
 
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App name="Sanket" />
+    <App />
   </React.StrictMode>
 );
 
