@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
@@ -16,29 +16,29 @@ function App() {
 
   // const createArray = (length) => [...Array(length)];
 
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users`)
-      .then((response) => response.json())
-      .then(setData)
-    // console.log(data)
-  }, [])
+  // useEffect(() => {
+  //   fetch(`https://api.github.com/users`)
+  //     .then((response) => response.json())
+  //     .then(setData)
+  //   // console.log(data)
+  // }, [])
 
-  if (data) {
-    console.log(data)
-    return (
-      < ul >
-        {
-          data.map((user) => (
-            <li key={user.id}>
-              {user.login}
-            </li>
-          ))
-        }
-      </ul >
-    )
-  }
+  // if (data) {
+  //   console.log(data)
+  //   return (
+  //     < ul >
+  //       {
+  //         data.map((user) => (
+  //           <li key={user.id}>
+  //             {user.login}
+  //           </li>
+  //         ))
+  //       }
+  //     </ul >
+  //   )
+  // }
 
   // function star({ selected = false, onselect }) {
   //   return (
@@ -84,6 +84,15 @@ function App() {
   //   // // </div> */}
   // )
 
+
+  // Use Reducer Function
+
+  const [number, setNumber] = useReducer((number, newNumber) => number + newNumber, 0)
+
+
+  return (
+    <h1 onClick={() => setNumber(1)}>{number}</h1>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
