@@ -90,8 +90,31 @@ function App() {
   const [number, setNumber] = useReducer((number, newNumber) => number + newNumber, 0)
 
 
+
+
   return (
-    <h1 onClick={() => setNumber(1)}>{number}</h1>
+
+    <div className="App">
+      <header>
+        <h1>Welcome to my website</h1>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <main>
+        <p>Here you can put your website content.</p>
+        <h1 onClick={() => setNumber(1)}>{number}</h1>
+      </main>
+      <footer>
+        <p>&copy; 2021 My Website. All rights reserved.</p>
+      </footer>
+    </div>
+
   )
 }
 
